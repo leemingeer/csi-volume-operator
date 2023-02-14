@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-dsr
+spec:
+  selector:
+    matchLabels:
+      app: dsr
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        service: nginx
+        app: dsr
+    spec:
+      containers:
+        - image: nginx
+          imagePullPolicy: Always
+          name: nginx
+          ports:
+            - containerPort: 80
+              protocol: TCP
+          volumeMounts:
+            - mountPath: /var/www
+              name: test-volume
+      volumes:
+        - name: test-volume
+          persistentVolumeClaim:
+            claimName: test-pvc

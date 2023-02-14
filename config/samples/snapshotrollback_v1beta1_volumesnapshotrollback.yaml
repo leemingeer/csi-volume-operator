@@ -1,0 +1,8 @@
+apiVersion: snapshotrollback.storage.k8s.io/v1beta1
+kind: VolumeSnapshotRollBack
+metadata:
+  name: volumesnapshotrollback-sample
+spec:
+  volumeSnapshot: <snapshot-name>
+  persistentVolumeClaimName: <pvc-name>
+

@@ -1,0 +1,30 @@
+# permissions for end users to edit volumesnapshotrollbacks.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: volumesnapshotrollback-editor-role
+rules:
+- apiGroups:
+  - snapshotrollback.storage.k8s.io
+  resources:
+  - volumesnapshotrollbacks
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - snapshotrollback.storage.k8s.io
+  resources:
+  - volumesnapshotrollbacks/status
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
